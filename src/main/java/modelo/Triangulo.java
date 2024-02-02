@@ -1,6 +1,6 @@
-package ec.edu.epn.modelo;
+package modelo;
 
-import ec.edu.epn.excepciones.ExcepcionTrianguloNoCreado;
+import excepciones.ExcepcionTrianguloNoCreado;
 
 /**
  *
