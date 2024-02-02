@@ -12,6 +12,10 @@ public class Triangulo {
     private String tipo;
     private double area;
 
+    public Triangulo(){
+        
+    }
+
     public Triangulo(double ladoA, double ladoB, double ladoC) throws ExcepcionTrianguloNoCreado {
         if (esTriangulo(ladoA, ladoB, ladoC)) {
             this.ladoA = ladoA;
