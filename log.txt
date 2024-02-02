@@ -1,0 +1,3 @@
+2024-02-02 09:58:51 - Error: no se creó el triángulo. Los lados proporcionados no pueden formar un triángulo.
+2024-02-02 10:00:28 - Error: no se creó el triángulo. Los lados proporcionados no pueden formar un triángulo.
+2024-02-02 10:01:20 - Error: no se creó el triángulo. Los lados proporcionados no pueden formar un triángulo.

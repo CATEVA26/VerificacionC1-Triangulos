@@ -24,7 +24,7 @@ public class Triangulo {
             calcularArea();
             identificarTipo();
         } else{
-            throw new ExcepcionTrianguloNoCreado("Error: no se creó el triángulo. Los lados proporcionados no pueden formar un triángulo");
+            throw new ExcepcionTrianguloNoCreado("Error: no se creó el triángulo. Los lados proporcionados no pueden formar un triángulo.");
         }
     }
 

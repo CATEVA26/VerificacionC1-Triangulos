@@ -57,14 +57,14 @@ public class TrianguloTest {
     // Pruebas del metodo esTriangulo
 
     @Test 
-    public void trianguloTresLadosIguales() throws ExcepcionTrianguloNoCreado{
+    public void trianguloTresLadosIguales(){
         ladoA = ladoB = ladoC = 3;
         triangulo = new Triangulo();
         assertTrue(triangulo.esTriangulo(ladoA, ladoB, ladoC));
     }
 
     @Test 
-    public void trianguloDosLadosIgualesValido() throws ExcepcionTrianguloNoCreado{
+    public void trianguloDosLadosIgualesValido(){
         ladoA = ladoB = 5;
         ladoC = 2;
         triangulo = new Triangulo();
@@ -72,7 +72,7 @@ public class TrianguloTest {
     }
 
     @Test 
-    public void trianguloDosLadosIgualesError() throws ExcepcionTrianguloNoCreado{
+    public void trianguloDosLadosIgualesError(){
         ladoA = ladoB = 2;
         ladoC = 5;
         triangulo = new Triangulo();
@@ -80,14 +80,13 @@ public class TrianguloTest {
     }
 
     @Test 
-    public void trianguloLadosDiferentesValido() throws ExcepcionTrianguloNoCreado{
+    public void trianguloLadosDiferentesValido(){
         triangulo = new Triangulo();
         assertTrue(triangulo.esTriangulo(ladoA, ladoB, ladoC));
     }
 
     @Test 
-    public void trianguloLadosDiferentesError() throws ExcepcionTrianguloNoCreado{
-        ladoA = 1;
+    public void trianguloLadosDiferentesError(){
         ladoB = 2;
         ladoC = 3;
         triangulo = new Triangulo();
