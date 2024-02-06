@@ -11,6 +11,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import excepciones.ExcepcionTrianguloNoCreado;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.BeforeAll;
 
@@ -49,10 +51,57 @@ public class TrianguloTest {
 
 
     // Pruebas del construcor
+    
+    @Test
+    public void testConstructorConLadosValidos() throws ExcepcionTrianguloNoCreado {
+        ladoA = 3.0;
+        ladoB = 4.0;
+        ladoC = 5.0;
 
+        triangulo = new Triangulo(ladoA, ladoB, ladoC);
+
+        assertNotNull(triangulo);
+        assertEquals(ladoA, triangulo.getLado1(), 0.01);
+        assertEquals(ladoB, triangulo.getLadoB(), 0.01);
+        assertEquals(ladoC, triangulo.getladoC(), 0.01);
+    }
+
+    @Test
+    public void testConstructorConLadosInvalidos() throws ExcepcionTrianguloNoCreado {
+        ladoA = 1.0;
+        ladoB = 2.0;
+        ladoC = 10.0;
+
+        assertThrows(ExcepcionTrianguloNoCreado.class, () -> {
+            triangulo = new Triangulo(ladoA, ladoB, ladoC);
+        });
+    }
 
     // Pruebas del metodo calcularArea
-
+    
+    @Test 
+    public void areaTresLadosIguales() throws ExcepcionTrianguloNoCreado{
+        ladoA = ladoB = ladoC = 3;
+        triangulo = new Triangulo(ladoA, ladoB, ladoC);
+        areaEsperada = (Math.sqrt(3)/4)*9;
+        assertEquals(areaEsperada, triangulo.getArea(), 0.01);
+    }
+    
+    @Test 
+    public void areaDosLadosIguales() throws ExcepcionTrianguloNoCreado {
+        ladoA = ladoB = 5;
+        ladoC = 2;
+        triangulo = new Triangulo(ladoA, ladoB, ladoC);
+        areaEsperada = Math.sqrt(24);
+        assertEquals(areaEsperada, triangulo.getArea(), 0.01);
+    }
+    
+    @Test 
+    public void areaLadosDiferentes() throws ExcepcionTrianguloNoCreado {
+        triangulo = new Triangulo(ladoA, ladoB, ladoC);
+        areaEsperada = 6;
+        assertEquals(areaEsperada, triangulo.getArea(), 0.01);
+    }
     
     // Pruebas del metodo esTriangulo
 
