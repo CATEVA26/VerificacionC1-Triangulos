@@ -12,6 +12,7 @@ import org.junit.jupiter.api.Test;
 
 import excepciones.ExcepcionTrianguloNoCreado;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.BeforeAll;
 
@@ -71,9 +72,9 @@ public class TrianguloTest {
         ladoB = 2.0;
         ladoC = 10.0;
 
-        // Act & Assert
-        triangulo = new Triangulo(ladoA, ladoB, ladoC);
-        // Si se lanza la excepción, la prueba pasará correctamente
+        assertThrows(ExcepcionTrianguloNoCreado.class, () -> {
+            triangulo = new Triangulo(ladoA, ladoB, ladoC);
+        });
     }
 
     // Pruebas del metodo calcularArea
