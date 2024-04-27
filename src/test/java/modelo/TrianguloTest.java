@@ -19,14 +19,13 @@ import org.junit.jupiter.api.BeforeAll;
 
 public class TrianguloTest {
 
-    static double ladoA, ladoB, ladoC; 
+    static int ladoA, ladoB, ladoC;
     static String tipoEsperado;
-    static double areaEsperada; 
-
     static Triangulo triangulo;
     
     @BeforeAll
     public static void setUpClass() throws ExcepcionTrianguloNoCreado{
+
         ladoA = 3;
         ladoB = 4;
         ladoC = 5;
@@ -54,9 +53,10 @@ public class TrianguloTest {
     
     @Test
     public void testConstructorConLadosValidos() throws ExcepcionTrianguloNoCreado {
-        ladoA = 3.0;
-        ladoB = 4.0;
-        ladoC = 5.0;
+        // CP 1
+        ladoA =(int)3.0;
+        ladoB =(int)4.0;
+        ladoC =(int)5.0;
 
         triangulo = new Triangulo(ladoA, ladoB, ladoC);
 
@@ -68,45 +68,20 @@ public class TrianguloTest {
 
     @Test
     public void testConstructorConLadosInvalidos() throws ExcepcionTrianguloNoCreado {
-        ladoA = 1.0;
-        ladoB = 2.0;
-        ladoC = 10.0;
+        // CP 2
+        ladoA =(int) 1.0;
+        ladoB =(int) 2.0;
+        ladoC =(int) 10.0;
 
         assertThrows(ExcepcionTrianguloNoCreado.class, () -> {
             triangulo = new Triangulo(ladoA, ladoB, ladoC);
         });
     }
-
-    // Pruebas del metodo calcularArea
-    
-    @Test 
-    public void areaTresLadosIguales() throws ExcepcionTrianguloNoCreado{
-        ladoA = ladoB = ladoC = 3;
-        triangulo = new Triangulo(ladoA, ladoB, ladoC);
-        areaEsperada = (Math.sqrt(3)/4)*9;
-        assertEquals(areaEsperada, triangulo.getArea(), 0.01);
-    }
-    
-    @Test 
-    public void areaDosLadosIguales() throws ExcepcionTrianguloNoCreado {
-        ladoA = ladoB = 5;
-        ladoC = 2;
-        triangulo = new Triangulo(ladoA, ladoB, ladoC);
-        areaEsperada = Math.sqrt(24);
-        assertEquals(areaEsperada, triangulo.getArea(), 0.01);
-    }
-    
-    @Test 
-    public void areaLadosDiferentes() throws ExcepcionTrianguloNoCreado {
-        triangulo = new Triangulo(ladoA, ladoB, ladoC);
-        areaEsperada = 6;
-        assertEquals(areaEsperada, triangulo.getArea(), 0.01);
-    }
-    
     // Pruebas del metodo esTriangulo
 
     @Test 
     public void trianguloTresLadosIguales(){
+        // CP 3
         ladoA = ladoB = ladoC = 3;
         triangulo = new Triangulo();
         assertTrue(triangulo.esTriangulo(ladoA, ladoB, ladoC));
@@ -114,6 +89,7 @@ public class TrianguloTest {
 
     @Test 
     public void trianguloDosLadosIgualesValido(){
+        // CP 4
         ladoA = ladoB = 5;
         ladoC = 2;
         triangulo = new Triangulo();
@@ -122,6 +98,7 @@ public class TrianguloTest {
 
     @Test 
     public void trianguloDosLadosIgualesError(){
+        //CP 5
         ladoA = ladoB = 2;
         ladoC = 5;
         triangulo = new Triangulo();
@@ -129,15 +106,10 @@ public class TrianguloTest {
     }
 
     @Test 
-    public void trianguloLadosDiferentesValido(){
-        triangulo = new Triangulo();
-        assertTrue(triangulo.esTriangulo(ladoA, ladoB, ladoC));
-    }
-
-    @Test 
     public void trianguloLadosDiferentesError(){
+        //CP 6
         ladoB = 2;
-        ladoC = 3;
+        ladoC = 7;
         triangulo = new Triangulo();
         assertFalse(triangulo.esTriangulo(ladoA, ladoB, ladoC));
     }
@@ -170,6 +142,17 @@ public class TrianguloTest {
         triangulo.identificarTipo();
         assertEquals(tipoEsperado, triangulo.getTipo());
     }
+    @Test
+    public void trianguloLadoNegativo() throws ExcepcionTrianguloNoCreado{
+        //CP 7
+        assertThrows(ExcepcionTrianguloNoCreado.class, () -> {
+            ladoA = -3;
+            ladoB = 4;
+            ladoC= 5;
+            new Triangulo(ladoA,ladoB,ladoC);
+        });
+    }
+
 
     
 }

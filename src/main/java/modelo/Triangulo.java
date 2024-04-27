@@ -8,30 +8,25 @@ import excepciones.ExcepcionTrianguloNoCreado;
  */
 public class Triangulo {
 
-    private double ladoA, ladoB, ladoC;
+    private int ladoA, ladoB, ladoC;
     private String tipo;
-    private double area;
 
     public Triangulo(){
         
     }
 
-    public Triangulo(double ladoA, double ladoB, double ladoC) throws ExcepcionTrianguloNoCreado {
+    public Triangulo(int ladoA,int  ladoB, int ladoC) throws ExcepcionTrianguloNoCreado {
         if (esTriangulo(ladoA, ladoB, ladoC)) {
             this.ladoA = ladoA;
             this.ladoB = ladoB;
             this.ladoC = ladoC;
-            calcularArea();
             identificarTipo();
+            System.out.println(tipo);
         } else{
             throw new ExcepcionTrianguloNoCreado("Error: no se creó el triángulo. Los lados proporcionados no pueden formar un triángulo.");
         }
     }
 
-    public void calcularArea(){
-        double semiPerimetro = (ladoA + ladoB + ladoC)/2;
-        this.area = Math.sqrt(semiPerimetro*(semiPerimetro-ladoA)*(semiPerimetro-ladoB)*(semiPerimetro-ladoC));
-    }
 
     public void identificarTipo() {
         if (this.ladoA == this.ladoB && this.ladoB == this.ladoC && this.ladoA == this.ladoC) {
@@ -67,28 +62,20 @@ public class Triangulo {
         return tipo;
     }
 
-    public double getArea() {
-        return area;
-    }
-
-    public void setLado1(double ladoA) {
+    public void setLado1(int ladoA) {
         this.ladoA = ladoA;
     }
 
-    public void setLadoB(double ladoB) {
+    public void setLadoB(int ladoB) {
         this.ladoB = ladoB;
     }
 
-    public void setladoC(double ladoC) {
+    public void setladoC(int ladoC) {
         this.ladoC = ladoC;
     }
 
     public void setTipo(String tipo) {
         this.tipo = tipo;
-    }
-
-    public void setArea(double area) {
-        this.area = area;
     }
 
 }
